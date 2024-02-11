@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `customer_business` (
 CREATE TABLE IF NOT EXISTS `customer_warehouse` (
     `id` varchar(10) NOT NULL, `name` varchar(45) NOT NULL, `addr` varchar(45) NOT NULL, `province` varchar(45) NOT NULL, `mobile1` varchar(15) NOT NULL, `mobile2` varchar(15) NOT NULL, `tel` varchar(15) NOT NULL, `fax` varchar(45) NOT NULL, `email` varchar(40) NOT NULL, `contactname` double NOT NULL, `upd_date` datetime NOT NULL
 ) ENGINE = MyISAM DEFAULT CHARSET = utf8;
-
+/*
 -- begin load csv files into tables
 LOAD DATA INFILE '/var/lib/mysql-files/acc_credit.csv' INTO
 TABLE acc_credit FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
@@ -64,3 +64,5 @@ TABLE customer_business FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATE
 LOAD DATA INFILE '/var/lib/mysql-files/customer_warehouse.csv' INTO
 TABLE customer_warehouse FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
 -- end load csv files into tables
+*/
+
