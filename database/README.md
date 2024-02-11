@@ -2,5 +2,6 @@
 
 Link in Discord server
 
-you must run `mkdir data`
-and download all `.csv` file into `data` directory
+in gg-drive folder `sql-add-data-table`
+
+download all `.sql` file into `docker-entrypoint-initdb.d`
