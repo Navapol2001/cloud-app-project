@@ -9,7 +9,7 @@ ENV MYSQL_ROOT_PASSWORD=password
 COPY ./docker-entrypoint-initdb.d/ /docker-entrypoint-initdb.d/
 
 # Copy your data files into the container
-COPY ./data/ /var/lib/mysql-files/
+#COPY ./data/ /var/lib/mysql-files/
 
 # Optional: Set permissions for the copied CSV files (might be necessary depending on your Docker setup)
-RUN chmod a+r /var/lib/mysql-files/*
+#RUN chmod a+r /var/lib/mysql-files/*
