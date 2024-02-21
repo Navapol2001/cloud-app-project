@@ -1,7 +1,7 @@
 export default function Client() {
 	return (
 		<div>
-			<h1>Client Application</h1>
+			<h1>Creditor Application</h1>
 		</div>
 	);
 }
