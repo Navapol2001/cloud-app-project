@@ -16,7 +16,7 @@ data class CrTrckView (
     val detail: String,
     val running_number: String,
     val amount: Double,
-    val upd_date: LocalDate,
+    val upd_date: String,
     val payment_date: String,
     val payment_type: String,
     val bank_account_id: String,

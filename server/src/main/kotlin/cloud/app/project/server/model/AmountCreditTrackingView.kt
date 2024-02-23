@@ -12,7 +12,7 @@ data class AmountCreditTrackingView(
     val ref_id: Int,
     val cust_id: String,
     val tracking_id: String,
-    val upd_date: LocalDate,
+    val upd_date: String,
     val transaction_form: String,
     val check_due_date: String,
     val status: String,

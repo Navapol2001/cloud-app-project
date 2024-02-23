@@ -20,7 +20,7 @@ data class CreditPaid (
     val paid_amount: Double,
     val pay_status: String,
     val accounting_id: String,
-    val upd_date: LocalDate,
+    val upd_date: String,
     val payment_type: String,
     val note: String
 )
