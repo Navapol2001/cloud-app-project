@@ -1,7 +1,16 @@
-export default function Client() {
+export default function Creditor() {
 	return (
-		<div>
-			<h1>Creditor Application</h1>
-		</div>
+		<>
+			<h1>Hello</h1>
+			<h1>Hello</h1>
+			<h1>Hello</h1>
+			<h1>Hello</h1>
+			<h1>Hello</h1>
+			<h1>Hello</h1>
+			<h1>Hello</h1>
+			<h1>Hello</h1>
+			<h1>Hello</h1>
+			<h1>Hello</h1>
+		</>
 	);
 }

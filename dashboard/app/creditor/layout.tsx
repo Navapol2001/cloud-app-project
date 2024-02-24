@@ -1,22 +1,19 @@
-import React from 'react';
-import SideBar from '../components/SideBar';
+import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 
 export default function ClientLayout({ children }: Readonly<{ children: React.ReactNode }>) {
 	return (
 		<>
-			<div>
-				<div className="grid grid-cols-5">
-					<SideBar />
-					<article className="col-span-4">
+			<body data-theme="winter">
+				<Header />
+				<div className="flex flex-col w-full">
+					<div className="card card-compact w-96 bg-base-100 shadow-xl self-center">
 						{children}
-					</article>
+					</div>
 				</div>
-			</div>
-			<div>
 				<Footer />
-			</div>
+			</body>
 		</>
 	);
 };
