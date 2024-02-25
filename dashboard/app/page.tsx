@@ -6,7 +6,9 @@ export default function LandingPage() {
       <div className="hero-content text-center">
         <div className="max-w-md">
           <h1 className="text-5xl font-bold">Loan Monitoring System 📡</h1>
-          <p className="py-6">Choose to <b>login as</b></p>
+          <p className="py-6">
+            Choose to <b>login as</b>
+          </p>
           <div className="flex-2 flex-col space-x-8 space-y-2">
             <Link href="/creditor">
               <button className="btn btn-secondary">Creditor</button>
@@ -18,5 +20,5 @@ export default function LandingPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }

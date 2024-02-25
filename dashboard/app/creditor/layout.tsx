@@ -1,19 +1,26 @@
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Footer from "../components/Footer";
+import NavBarContent from "../components/NavBarContent";
+import SideBarContent from "../components/SideBarContent";
 
-
-export default function ClientLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function ClientLayout({
+	children,
+}: Readonly<{ children: React.ReactNode }>) {
 	return (
-		<>
-			<body data-theme="winter">
-				<Header />
-				<div className="flex flex-col w-full">
-					<div className="card card-compact w-96 bg-base-100 shadow-xl self-center">
-						{children}
-					</div>
-				</div>
+		<div className="drawer">
+			<input id="header-drawer" type="checkbox" className="drawer-toggle" />
+			<div className="drawer-content">
+				<NavBarContent />
+				<div className="m-4 p-2">{children}</div>
 				<Footer />
-			</body>
-		</>
+			</div>
+			<div className="drawer-side">
+				<label
+					htmlFor="header-drawer"
+					aria-label="close sidebar"
+					className="drawer-overlay"
+				/>
+				<SideBarContent />
+			</div>
+		</div>
 	);
-};
+}
