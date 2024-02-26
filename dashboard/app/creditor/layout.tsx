@@ -10,7 +10,11 @@ export default function ClientLayout({
 			<input id="header-drawer" type="checkbox" className="drawer-toggle" />
 			<div className="drawer-content">
 				<NavBarContent />
-				<div className="m-4 p-2">{children}</div>
+				<div className="m-4 flex justify-center">
+					<div id="content" className="card bg-base-100 shadow-xl max-w-full sm:max-w-[calc(100%-20px)] md:max-w-[calc(100%-40px)] lg:max-w-[calc(100%-60px)] xl:max-w-[calc(100%-80px)]">
+						{children}
+					</div>
+				</div>
 				<Footer />
 			</div>
 			<div className="drawer-side">
