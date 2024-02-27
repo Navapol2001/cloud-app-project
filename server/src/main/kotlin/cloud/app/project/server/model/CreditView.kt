@@ -26,5 +26,4 @@ data class CreditView (
     val note: String,
     val pay_stats: String,
     val customer_name: String
-
 )
