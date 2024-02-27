@@ -20,4 +20,13 @@ class CreditViewService {
     fun getByUpdDate(year: String): List<CreditView> {
         return creditViewRepo.findByYear(year)
     }
+
+    fun getByCustId(custId: String): List<CreditView> {
+        return  creditViewRepo.findByCustId(custId)
+    }
+
+    fun getByFilterParam(custId: String, year: String): List<CreditView> {
+        return creditViewRepo.findByFilterParam(custId, year)
+    }
+
 }

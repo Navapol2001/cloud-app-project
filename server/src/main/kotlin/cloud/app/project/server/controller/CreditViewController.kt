@@ -3,13 +3,7 @@
 import cloud.app.project.server.model.CreditView
 import cloud.app.project.server.service.CreditViewService
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.format.annotation.DateTimeFormat
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestParam
-import org.springframework.web.bind.annotation.RestController
-import org.springframework.web.bind.annotation.CrossOrigin;
-import java.time.LocalDate
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/creditView")
@@ -23,9 +17,16 @@ class CreditViewController {
         return creditViewService.getAllCreditView()
     }
 
-    @CrossOrigin(origins = ["http://localhost:3000"])
-    @GetMapping("/filter")
-    fun getFilter(@RequestParam("year") year: String): List<CreditView> {
-        return creditViewService.getByUpdDate(year)
+    @GetMapping("/custId/{custId}")
+    fun getIdFilter(@PathVariable("custId") custId: String): List<CreditView> {
+        return creditViewService.getByCustId(custId)
+    }
+
+    @GetMapping("/filter/{custId}/{year}")
+    fun getFilteredCreditViews(
+        @PathVariable("custId") custId: String,
+        @PathVariable("year") year: String
+    ): List<CreditView> {
+        return creditViewService.getByFilterParam(custId, year)
     }
 }
