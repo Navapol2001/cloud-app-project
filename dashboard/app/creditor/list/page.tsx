@@ -1,36 +1,7 @@
 "use client";
 import { useState, useEffect } from 'react';
-
-interface CreditViewApiResponse {
-	id: number;
-	acc_tracking: string;
-	cust_id: string;
-	accounting_id: string;
-	detail: string;
-	running_number: string;
-	amount: number;
-	upd_date: string; // assuming dates are in string format
-	payment_date: string;
-	payment_type: string;
-	bank_account_id: string;
-	check_id: string;
-	check_due_date: string;
-	statue: null | string;
-	note: string;
-	pay_stats: null | string;
-	customer_name: string;
-}
-
-
-type allowedStatus = "C" | "A" | "A*" | "A**";
-
-interface CreditorListData {
-	date: Date;
-	weightingNo?: number;
-	status: string;
-	billNo: string;
-	amount: number;
-}
+import { CreditViewApiResponse } from '@/app/utils/apiTypes';
+import { CreditorListData, allowedStatus } from '@/app/utils/dataViews';
 
 export default function CreditorList() {
 	const [startDate, setStartDate] = useState('');
