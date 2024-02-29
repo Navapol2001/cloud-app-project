@@ -13,6 +13,7 @@ class DebitTrackingViewController {
     @Autowired
     private lateinit var debitTrackingViewService: DebitTrackingViewService
 
+    @CrossOrigin(origins = ["http://localhost:3000"])
     @GetMapping
     fun getAll(
         @RequestParam(defaultValue = "0") page: Int,
@@ -22,6 +23,7 @@ class DebitTrackingViewController {
         return debitTrackingViewService.getAllDebitTrackingView(pageable)
     }
 
+    @CrossOrigin(origins = ["http://localhost:3000"])
     @GetMapping("/year/{year}")
     fun getByYear(
         @PathVariable("year") year: String,
@@ -32,6 +34,7 @@ class DebitTrackingViewController {
         return debitTrackingViewService.getByUpdDate(year, pageable)
     }
 
+    @CrossOrigin(origins = ["http://localhost:3000"])
     @GetMapping("/custId/{custId}")
     fun getByCustId(
         @PathVariable("custId") custId: String,
@@ -42,6 +45,7 @@ class DebitTrackingViewController {
         return debitTrackingViewService.getByCustId(custId, pageable)
     }
 
+    @CrossOrigin(origins = ["http://localhost:3000"])
     @GetMapping("/filter/{custId}/{year}")
     fun getFiltereddebitViews(
         @PathVariable("custId") custId: String,

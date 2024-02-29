@@ -13,10 +13,13 @@ class CreditPaidController {
     @Autowired
     private lateinit var creditPaidService: CreditPaidService
 
+    @CrossOrigin(origins = ["http://localhost:3000"]) //config CORS policy
     @GetMapping
     fun getAll(): List<CreditPaid> {
         return creditPaidService.getAllCreditPaid()
     }
+
+    @CrossOrigin(origins = ["http://localhost:3000"])
     @GetMapping("/year/{year}")
     fun getByYear(
         @PathVariable("year") year: String,
@@ -27,6 +30,7 @@ class CreditPaidController {
         return creditPaidService.getByUpdDate(year, pageable)
     }
 
+    @CrossOrigin(origins = ["http://localhost:3000"])
     @GetMapping("/custId/{custId}")
     fun getByCustId(
         @PathVariable("custId") custId: String,
@@ -37,6 +41,7 @@ class CreditPaidController {
         return creditPaidService.getByCustId(custId, pageable)
     }
 
+    @CrossOrigin(origins = ["http://localhost:3000"])
     @GetMapping("/filter/{custId}/{year}")
     fun getFilteredCreditViews(
         @PathVariable("custId") custId: String,

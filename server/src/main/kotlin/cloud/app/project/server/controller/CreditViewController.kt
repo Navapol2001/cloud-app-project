@@ -13,6 +13,7 @@ class CreditViewController {
     @Autowired
     private lateinit var creditViewService: CreditViewService
 
+    @CrossOrigin(origins = ["http://localhost:3000"])
     @GetMapping
     fun getAll(
         @RequestParam(defaultValue = "0") page: Int,
@@ -22,6 +23,7 @@ class CreditViewController {
         return creditViewService.getAllCreditView(pageable)
     }
 
+    @CrossOrigin(origins = ["http://localhost:3000"])
     @GetMapping("/year/{year}")
     fun getByYear(
         @PathVariable("year") year: String,
@@ -32,6 +34,7 @@ class CreditViewController {
         return creditViewService.getByUpdDate(year, pageable)
     }
 
+    @CrossOrigin(origins = ["http://localhost:3000"])
     @GetMapping("/custId/{custId}")
     fun getByCustId(
         @PathVariable("custId") custId: String,
@@ -42,6 +45,7 @@ class CreditViewController {
         return creditViewService.getByCustId(custId, pageable)
     }
 
+    @CrossOrigin(origins = ["http://localhost:3000"])
     @GetMapping("/filter/{custId}/{year}")
     fun getFilteredCreditViews(
         @PathVariable("custId") custId: String,
