@@ -17,7 +17,7 @@ data class CreditTrackingView (
     val pay_stats: String,
     val running_number: String,
     val _payment_date: String,
-    val partial_paid: String,
+    val partial_paid: Double,
     val balance_amount: Double,
     val accounting_id: String,
     val bank_account_id: String,

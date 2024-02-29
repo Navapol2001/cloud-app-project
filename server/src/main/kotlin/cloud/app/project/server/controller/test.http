@@ -1,4 +1,4 @@
 //HTTP GET method
 
-GET http://localhost:8080/api/creditView/filter/อพ002/2019
+GET http://localhost:8080/api/creditView/year/2019
 

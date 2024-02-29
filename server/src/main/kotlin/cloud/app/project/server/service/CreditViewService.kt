@@ -1,32 +1,31 @@
 ﻿package cloud.app.project.server.service
 
-import cloud.app.project.server.model.AmountCreditTrackingView
 import cloud.app.project.server.model.CreditView
-import cloud.app.project.server.repository.AmountCreditTrackingViewRepo
 import cloud.app.project.server.repository.CreditViewRepo
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
-import java.time.LocalDate
 
 @Service
 class CreditViewService {
     @Autowired
     private lateinit var creditViewRepo: CreditViewRepo
 
-    fun getAllCreditView(): List<CreditView> {
+    fun getAllCreditView(pageable: Pageable): MutableList<CreditView> {
         return creditViewRepo.findAll()
     }
 
-    fun getByUpdDate(year: String): List<CreditView> {
-        return creditViewRepo.findByYear(year)
+    fun getByUpdDate(year: String, pageable: Pageable): Page<CreditView> {
+        return creditViewRepo.findByYear(year, pageable)
     }
 
-    fun getByCustId(custId: String): List<CreditView> {
-        return  creditViewRepo.findByCustId(custId)
+    fun getByCustId(custId: String, pageable: Pageable): Page<CreditView> {
+        return  creditViewRepo.findByCustId(custId, pageable)
     }
 
-    fun getByFilterParam(custId: String, year: String): List<CreditView> {
-        return creditViewRepo.findByFilterParam(custId, year)
+    fun getByFilterParam(custId: String, year: String, pageable: Pageable): Page<CreditView> {
+        return creditViewRepo.findByFilterParam(custId, year, pageable)
     }
 
 }
