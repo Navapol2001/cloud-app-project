@@ -1,7 +1,6 @@
 ﻿package cloud.app.project.server.controller
 
 import cloud.app.project.server.model.CreditTrackingView
-import cloud.app.project.server.model.CreditView
 import cloud.app.project.server.service.CreditTrackingViewService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.Page

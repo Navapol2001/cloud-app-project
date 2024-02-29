@@ -3,7 +3,6 @@
 import jakarta.persistence.Entity
 import jakarta.persistence.Id
 import jakarta.persistence.Table
-import java.time.LocalDate
 
 @Entity
 @Table(name = "credit_paid")
@@ -23,4 +22,19 @@ data class CreditPaid (
     val upd_date: String,
     val payment_type: String,
     val note: String
-)
+) {
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other == null || javaClass != other.javaClass) return false
+        other as CreditView
+
+        return id == other.id
+    }
+
+    override fun hashCode(): Int = id.hashCode()
+
+    @Override
+    override fun toString(): String {
+        return this::class.simpleName + "(id = $id )"
+    }
+}
