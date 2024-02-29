@@ -10,6 +10,10 @@ services:
         volumes:
             - db_data:/var/lib/mysql # Persistent data volume
             - ./database/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d # Initialization scripts
+        restart: always # Ensure the DB always restarts on failure
+        networks:
+            - backend_network # Connect DB to the backend network
+
     backend:
         build:
             context: ./server
@@ -20,6 +24,10 @@ services:
             - "8080:8080"
         env_file:
             - .env
+        networks:
+            - backend_network # Backend and DB on the same network
+            - dashboard_network # Optional: If your dashboard needs direct access to backend via internal network
+
     dashboard:
         build:
             context: ./dashboard
@@ -27,7 +35,13 @@ services:
         depends_on:
             - backend
         ports:
-            - "3000:3000" # Map port 80 inside the container to port 80 on the host
+            - "3000:3000"
+        networks:
+            - dashboard_network # Connect dashboard to its own network
+
+networks:
+    backend_network: # Defines a network for the backend and DB
+    dashboard_network: # Defines a network for the dashboard
 
 volumes:
     db_data:
