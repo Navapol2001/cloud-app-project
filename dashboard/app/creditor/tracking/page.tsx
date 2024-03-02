@@ -1,5 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
+import Loading from "@/app/components/Loading";
+import ErrorCard from "@/app/components/Error";
 
 type CreditTrackingView = {
 	id: number;
@@ -35,7 +37,7 @@ export default function TrackingPage() {
 
 				const response = await fetch(url);
 				if (!response.ok) {
-					throw new Error("Network response was not ok");
+					throw new Error("Network response was not ok") as Error;
 				}
 				const data = await response.json();
 
@@ -46,7 +48,6 @@ export default function TrackingPage() {
 				// setCreditTrackingViews(data.content);
 				setCreditTrackingViews(filteredData);
 			} catch (err) {
-				console.error(err instanceof Error ? err.message : "An error occurred");
 				setError((err as Error).message);
 			} finally {
 				setIsLoading(false);
@@ -64,8 +65,8 @@ export default function TrackingPage() {
 		setPage((prevPage) => prevPage + 1);
 	};
 
-	if (isLoading) return <div>Loading...</div>;
-	if (error) return <div>Error: {error}</div>;
+	if (isLoading) return <Loading />;
+	if (error) return <ErrorCard errorMessage={error} />;
 
 	return (
 		<div className="p-4">

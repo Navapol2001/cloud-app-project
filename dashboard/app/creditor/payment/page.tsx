@@ -1,5 +1,7 @@
 "use client";
 import React, { useEffect, useState } from 'react';
+import Loading from '@/app/components/Loading';
+import ErrorCard from '@/app/components/Error';
 
 // Define a type for the CreditView model based on your Kotlin entity
 type CreditView = {
@@ -47,7 +49,7 @@ export default function Page() {
 					throw new Error('Network response was not ok');
 				}
 				const data = await response.json();
-				const filteredData = data
+				const filteredData = data.content
 					.filter((cv: CreditView) => {
 						return (selectedPaymentType === "" || cv.payment_type === selectedPaymentType) &&
 							(startDate === "" && endDate === "" || isDateInRange(cv.upd_date, startDate, endDate));
@@ -88,8 +90,8 @@ export default function Page() {
 	const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
 
-	if (isLoading) return <div>Loading...</div>;
-	if (error) return <div>Error: {error}</div>;
+	if (isLoading) return <Loading />;
+	if (error) return <ErrorCard errorMessage={error} />;
 
 	const getPageNumbers = (currentPage: number, totalPages: number): (number | string)[] => {
 		const pageNumbers = [];
