@@ -13,8 +13,8 @@ class DebitPaidService {
     @Autowired
     private lateinit var debitPaidRepo: DebitPaidRepo
 
-    fun getAllDebitPaid(): List<DebitPaid> {
-        return debitPaidRepo.findAll()
+    fun getAllDebitPaid(pageable: Pageable): Page<DebitPaid> {
+        return debitPaidRepo.findAll(pageable)
     }
     fun getByUpdDate(year: String, pageable: Pageable): Page<DebitPaid> {
         return debitPaidRepo.findByYear(year, pageable)

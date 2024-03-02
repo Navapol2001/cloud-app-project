@@ -18,7 +18,7 @@ class DebitTrackingViewController {
     fun getAll(
         @RequestParam(defaultValue = "0") page: Int,
         @RequestParam(defaultValue = "20") size: Int
-    ): MutableList<DebitTrackingView> {
+    ): Page<DebitTrackingView> {
         val pageable = PageRequest.of(page, size)
         return debitTrackingViewService.getAllDebitTrackingView(pageable)
     }

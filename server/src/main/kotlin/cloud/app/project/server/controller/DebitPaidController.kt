@@ -15,8 +15,12 @@ class DebitPaidController {
 
     @CrossOrigin(origins = ["http://localhost:3000"])
     @GetMapping
-    fun getAll(): List<DebitPaid> {
-        return debitPaidService.getAllDebitPaid()
+    fun getAll(
+        @RequestParam(defaultValue = "0") page: Int,
+        @RequestParam(defaultValue = "20") size: Int
+    ): Page<DebitPaid> {
+        val pageable = PageRequest.of(page,size)
+        return debitPaidService.getAllDebitPaid(pageable)
     }
 
     @CrossOrigin(origins = ["http://localhost:3000"])

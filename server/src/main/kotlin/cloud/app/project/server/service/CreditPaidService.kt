@@ -14,8 +14,8 @@ class CreditPaidService {
     @Autowired
     private lateinit var creditPaidRepo: CreditPaidRepo
 
-    fun getAllCreditPaid(): List<CreditPaid> {
-        return creditPaidRepo.findAll()
+    fun getAllCreditPaid(pageable: Pageable): Page<CreditPaid> {
+        return creditPaidRepo.findAll(pageable)
     }
 
     fun getByUpdDate(year: String, pageable: Pageable): Page<CreditPaid> {

@@ -12,8 +12,8 @@ class CreditViewService {
     @Autowired
     private lateinit var creditViewRepo: CreditViewRepo
 
-    fun getAllCreditView(pageable: Pageable): MutableList<CreditView> {
-        return creditViewRepo.findAll()
+    fun getAllCreditView(pageable: Pageable): Page<CreditView> {
+        return creditViewRepo.findAll(pageable)
     }
 
     fun getByUpdDate(year: String, pageable: Pageable): Page<CreditView> {

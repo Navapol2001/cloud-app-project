@@ -18,7 +18,7 @@ class CreditViewController {
     fun getAll(
         @RequestParam(defaultValue = "0") page: Int,
         @RequestParam(defaultValue = "20") size: Int
-    ): MutableList<CreditView> {
+    ): Page<CreditView> {
         val pageable = PageRequest.of(page, size)
         return creditViewService.getAllCreditView(pageable)
     }

@@ -13,8 +13,8 @@ class CreditTrackingViewService {
     @Autowired
     private lateinit var creditTrackingViewRepo: CreditTrackingViewRepo
 
-    fun getAllCreditTrackingView(pageable: Pageable): MutableList<CreditTrackingView> {
-        return creditTrackingViewRepo.findAll()
+    fun getAllCreditTrackingView(pageable: Pageable): Page<CreditTrackingView> {
+        return creditTrackingViewRepo.findAll(pageable)
     }
 
     fun getByUpdDate(year: String, pageable: Pageable): Page<CreditTrackingView> {

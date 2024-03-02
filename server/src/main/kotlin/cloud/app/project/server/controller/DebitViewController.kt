@@ -18,7 +18,7 @@ class DebitViewController {
     fun getAll(
         @RequestParam(defaultValue = "0") page: Int,
         @RequestParam(defaultValue = "20") size: Int
-    ): MutableList<DebitView> {
+    ): Page<DebitView> {
         val pageable = PageRequest.of(page, size)
         return debitViewService.getAllDebitView(pageable)
     }

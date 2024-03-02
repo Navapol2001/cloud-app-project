@@ -12,8 +12,8 @@ class DebitViewService {
     @Autowired
     private lateinit var debitViewRepo: DebitViewRepo
 
-    fun getAllDebitView(pageable: Pageable): MutableList<DebitView> {
-        return debitViewRepo.findAll()
+    fun getAllDebitView(pageable: Pageable): Page<DebitView> {
+        return debitViewRepo.findAll(pageable)
     }
 
     fun getByUpdDate(year: String, pageable: Pageable): Page<DebitView> {

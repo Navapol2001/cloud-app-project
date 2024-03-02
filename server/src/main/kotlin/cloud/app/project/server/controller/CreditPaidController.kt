@@ -15,8 +15,12 @@ class CreditPaidController {
 
     @CrossOrigin(origins = ["http://localhost:3000"]) //config CORS policy
     @GetMapping
-    fun getAll(): List<CreditPaid> {
-        return creditPaidService.getAllCreditPaid()
+    fun getAll(
+        @RequestParam(defaultValue = "0") page: Int,
+        @RequestParam(defaultValue = "20") size: Int
+    ): Page<CreditPaid> {
+        val pageable = PageRequest.of(page, size)
+        return creditPaidService.getAllCreditPaid(pageable)
     }
 
     @CrossOrigin(origins = ["http://localhost:3000"])
