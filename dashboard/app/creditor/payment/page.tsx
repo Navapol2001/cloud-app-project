@@ -144,7 +144,7 @@ export default function Page() {
 
 	return (
 		<div className="p-4">
-			<h1 className="text-2xl font-bold text-center mb-4">Credit View Data</h1>
+			<h1 className="text-2xl font-bold text-center mb-4">Payment Type Visualization</h1>
 			<div className="flex flex-col lg:flex-row gap-4 mb-6">
 				{/* Filter by Payment Type */}
 				<div className="flex-grow">
