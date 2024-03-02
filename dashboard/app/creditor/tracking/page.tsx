@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
 
 type CreditTrackingView = {
 	id: number;
@@ -13,36 +12,39 @@ type CreditTrackingView = {
 };
 
 export default function TrackingPage() {
-	const params = useSearchParams();
 	const [creditTrackingViews, setCreditTrackingViews] = useState<CreditTrackingView[]>([]);
 	const [custId, setCustId] = useState("");
 	const [year, setYear] = useState("");
 	const [isLoading, setIsLoading] = useState(true);
 	const [error, setError] = useState<string | null>(null);
-
-	const pageVal = params.get("page") || "0";
-	const sizeVal = params.get("size") || "20";
+	const [page, setPage] = useState(0);
+	const [size, setSize] = useState(20);
 
 	useEffect(() => {
 		async function fetchCreditTrackingViews() {
+			setIsLoading(true);
 			try {
 				let url = `http://localhost:8080/api/creditTrackingView`;
-				if (custId && year) {
-					url += `/filter/${custId}/${year}?page=${pageVal}&size=${sizeVal}`;
-				} else if (custId) {
-					url += `/custId/${custId}?page=${pageVal}&size=${sizeVal}`;
-				} else if (year) {
-					url += `/year/${year}?page=${pageVal}&size=${sizeVal}`;
-				} else {
-					url += `?page=${pageVal}&size=${sizeVal}`;
-				}
+				const queryParams = new URLSearchParams();
+				// custId is UTF-8 you must encode it
+				if (custId) queryParams.append("custId", custId);
+				if (year) queryParams.append("year", year);
+				queryParams.append("page", page.toString());
+				queryParams.append("size", size.toString());
+				url += `?${queryParams.toString()}`;
 
 				const response = await fetch(url);
 				if (!response.ok) {
 					throw new Error("Network response was not ok");
 				}
 				const data = await response.json();
-				setCreditTrackingViews(data.content); // Assuming the 'content' field holds your data
+
+				// manually filter custId
+				const filteredData = data.content.filter((cv: CreditTrackingView) => {
+					return (custId === "" || cv.cust_id === custId);
+				});
+				// setCreditTrackingViews(data.content);
+				setCreditTrackingViews(filteredData);
 			} catch (err) {
 				console.error(err instanceof Error ? err.message : "An error occurred");
 				setError((err as Error).message);
@@ -52,7 +54,15 @@ export default function TrackingPage() {
 		}
 
 		fetchCreditTrackingViews();
-	}, [pageVal, sizeVal, custId, year]);
+	}, [custId, year, page, size]);
+
+	const handlePreviousPage = () => {
+		setPage((prevPage) => (prevPage > 0 ? prevPage - 1 : 0));
+	};
+
+	const handleNextPage = () => {
+		setPage((prevPage) => prevPage + 1);
+	};
 
 	if (isLoading) return <div>Loading...</div>;
 	if (error) return <div>Error: {error}</div>;
@@ -60,7 +70,6 @@ export default function TrackingPage() {
 	return (
 		<div className="p-4">
 			<h1 className="text-2xl font-bold text-center mb-4">Debit Tracking Information</h1>
-			{/* Inputs for Customer ID and Year */}
 			<div className="flex flex-wrap gap-4 mb-4">
 				<input
 					type="text"
@@ -104,6 +113,10 @@ export default function TrackingPage() {
 						))}
 					</tbody>
 				</table>
+			</div>
+			<div className="flex justify-center gap-4 mt-4">
+				<button onClick={handlePreviousPage} className="btn">Previous Page</button>
+				<button onClick={handleNextPage} className="btn">Next Page</button>
 			</div>
 		</div>
 	);
