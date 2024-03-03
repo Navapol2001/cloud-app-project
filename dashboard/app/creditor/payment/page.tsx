@@ -2,29 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Loading from '@/app/components/Loading';
 import ErrorCard from '@/app/components/Error';
-
-// Define a type for the CreditView model based on your Kotlin entity
-type CreditView = {
-	id: number;
-	acc_tracking: String;
-	cust_id: String;
-	accounting_id: String;
-	detail: String;
-	running_number: String;
-	amount: number;
-	upd_date: String;
-	payment_date: String;
-	payment_type: String;
-	bank_account_id: String;
-	check_id: String;
-	check_due_date: String;
-	statue: String;
-	note: String;
-	pay_stats: String;
-	customer_name: String;
-};
-
-type PaymentType = "เงินสด" | "เช็ค" | "โอน" | "";
+import { CreditView, PaymentType } from '@/app/utils/dataViews';
 
 export default function Page() {
 	// date related states
