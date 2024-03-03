@@ -14,46 +14,42 @@ export default function TrackingPage() {
 	const [size, setSize] = useState(20);
 
 	useEffect(() => {
-		async function fetchCreditTrackingViews() {
+		const fetchCreditTrackingViews = async () => {
 			setIsLoading(true);
 			try {
-				let url = `http://localhost:8080/api/creditTrackingView`;
-				const queryParams = new URLSearchParams();
-				// custId is UTF-8 you must encode it
-				if (custId) queryParams.append("custId", custId);
-				if (year) queryParams.append("year", year);
-				queryParams.append("page", page.toString());
-				queryParams.append("size", size.toString());
-				url += `?${queryParams.toString()}`;
+				const queryParams = new URLSearchParams({
+					custId: custId,
+					year: year,
+					page: page.toString(),
+					size: size.toString(),
+				});
+				const url = `http://localhost:8080/api/creditTrackingView?${queryParams.toString()}`;
 
 				const response = await fetch(url);
 				if (!response.ok) {
-					throw new Error("Network response was not ok") as Error;
+					throw new Error("Network response was not ok");
 				}
 				const data = await response.json();
-
-				// manually filter custId
-				const filteredData = data.content.filter((cv: CreditTrackingView) => {
-					return (custId === "" || cv.cust_id === custId);
-				});
-				// setCreditTrackingViews(data.content);
-				setCreditTrackingViews(filteredData);
+				let rows: CreditTrackingView[] = [];
+				if (custId) {
+					// manually filter the data if custId is provided
+					rows = data.content.filter((view: CreditTrackingView) => view.cust_id === custId);
+				} else {
+					rows = data.content;
+				}
+				setCreditTrackingViews(rows);
 			} catch (err) {
 				setError((err as Error).message);
 			} finally {
 				setIsLoading(false);
 			}
-		}
+		};
 
 		fetchCreditTrackingViews();
 	}, [custId, year, page, size]);
 
-	const handlePreviousPage = () => {
-		setPage((prevPage) => (prevPage > 0 ? prevPage - 1 : 0));
-	};
-
-	const handleNextPage = () => {
-		setPage((prevPage) => prevPage + 1);
+	const handlePageChange = (newPage: number) => {
+		setPage((prevPage) => Math.max(0, prevPage + newPage));
 	};
 
 	if (isLoading) return <Loading />;
@@ -107,8 +103,8 @@ export default function TrackingPage() {
 				</table>
 			</div>
 			<div className="flex justify-center gap-4 mt-4">
-				<button onClick={handlePreviousPage} className="btn">Previous Page</button>
-				<button onClick={handleNextPage} className="btn">Next Page</button>
+				<button onClick={() => handlePageChange(-1)} className="btn btn-primary" disabled={page === 0}>Previous Page</button>
+				<button onClick={() => handlePageChange(1)} className="btn btn-primary">Next Page</button>
 			</div>
 		</div>
 	);
