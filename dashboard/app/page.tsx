@@ -13,8 +13,8 @@ export default function LandingPage() {
             <Link href="/creditor">
               <button className="btn btn-secondary">Creditor</button>
             </Link>
-            <Link href="/client">
-              <button className="btn btn-primary">Client</button>
+            <Link href="/customer">
+              <button className="btn btn-primary">Customer</button>
             </Link>
           </div>
         </div>

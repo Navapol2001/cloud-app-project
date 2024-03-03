@@ -15,7 +15,7 @@ export default function PaymentPage() {
 	const [itemsPerPage] = useState(20); // Assuming this is a constant
 
 	useEffect(() => {
-		const fetchCreditViews = async () => {
+		const fetchDebitViews = async () => {
 			setIsLoading(true);
 			try {
 				const queryParams = new URLSearchParams({
@@ -25,7 +25,7 @@ export default function PaymentPage() {
 					...(year && { year }),
 				});
 
-				const response = await fetch(`http://localhost:8080/api/creditView?${queryParams}`);
+				const response = await fetch(`http://localhost:8080/api/debitView?${queryParams}`);
 				if (!response.ok) {
 					throw new Error('Network response was not ok');
 				}
@@ -39,7 +39,7 @@ export default function PaymentPage() {
 			}
 		};
 
-		fetchCreditViews();
+		fetchDebitViews();
 	}, [custId, year, currentPage, itemsPerPage]);
 
 	const handlePageChange = (newPage: number) => {

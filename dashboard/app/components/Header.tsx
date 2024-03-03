@@ -1,15 +1,16 @@
 "use client";
 import NavBarContent from "./NavBarContent";
 import SideBarContent from "./SideBarContent";
+import { ContentType } from "../utils/utilsTypes";
 
-export default function Header() {
+export default function Header({ contentType }: { contentType: ContentType }) {
   return (
     <div className="drawer">
       <input id="header-drawer" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
         {" "}
         {/* Begin page content */}
-        <NavBarContent />
+        <NavBarContent contentType={contentType} />
       </div>{" "}
       {/* End page content */}
       <div className="drawer-side">
@@ -21,7 +22,7 @@ export default function Header() {
           className="drawer-overlay"
         ></label>
         {/* Sidebar content here */}
-        <SideBarContent />
+        <SideBarContent contentType={contentType} />
       </div>
     </div>
   );

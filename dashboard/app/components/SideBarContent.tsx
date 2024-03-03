@@ -3,7 +3,6 @@ import Link from "next/link";
 import logo from "../../public/logo.webp";
 import { ContentType } from "../utils/utilsTypes";
 
-// Add a prop to the component for contentType
 export default function SideBarContent({ contentType }: { contentType: ContentType }) {
   // Now, instead of deriving from the path, use the contentType prop directly
   const isCreditor = contentType === 'creditor';
@@ -31,9 +30,9 @@ export default function SideBarContent({ contentType }: { contentType: ContentTy
       )}
       {isCustomer && (
         <>
-          <li><Link href="/customer/overview">Overview</Link></li>
-          <li><Link href="/customer/transactions">Transactions</Link></li>
-          <li><Link href="/customer/profile">Profile</Link></li>
+          <li><Link href="/customer/paid">Paid Bill Page</Link></li>
+          <li><Link href="/customer/payment">Payment Visualize Page</Link></li>
+          <li><Link href="/customer/tracking">Tracking Page</Link></li>
         </>
       )}
     </ul>
