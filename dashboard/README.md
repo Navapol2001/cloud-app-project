@@ -11,4 +11,10 @@ Then you can run `npm run dev` or `yarn dev` to start the development server.
 
 - `/` - Home page
 - `/creditor` - Creditor page
-- `/creditor/payment` - Visuaalize payment page
+- `/creditor/payment` - Creditor Visuaalize payment page
+- `/creditor/paid` - Creditor Paid page
+- `/creditor/tracking` - Creditor Tracking page
+- `/customer` - Customer page
+- `/customer/payment` - Customer Payment page
+- `/customer/paid` - Customer Paid page
+- `/customer/tracking` - Customer Tracking page
