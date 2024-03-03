@@ -1,7 +1,5 @@
 # cloud-app-project
 
-## Instruction on how to run compose
-
 # Loan Monitoring
 
 This project was created for EN814710 Cloud Applications and Networking.
@@ -49,7 +47,6 @@ Successfully created .env with specified environment variables.
 ```
 
 2. Before you compose Up you must add `database/docker-entrypoint-initdb.d` sql queries. You can read more about it in [database markdown document](./database/README.md).
-- example
 ![image](https://scontent.fkkc3-1.fna.fbcdn.net/v/t1.15752-9/430881713_418694170613533_2318251427622433982_n.png?_nc_cat=107&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeE75qCPfGpag6JWC42LtcX_z-UiyuoEsmDP5SLK6gSyYMn9uuFbuUFRRF7v5qMTExraxoTtYd0U9ZR4r4Uzdsjy&_nc_ohc=VetoGwtUOK4AX_1kR9_&_nc_ht=scontent.fkkc3-1.fna&oh=03_AdTOimqitKW7IFzG-9zw9ssfjwYc9KSB-eLniu6hjFlMDQ&oe=660C0C42)
 3. Make sure you have docker compose
 ```bash
