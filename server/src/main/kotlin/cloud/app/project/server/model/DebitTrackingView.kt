@@ -18,7 +18,7 @@ data class DebitTrackingView (
     val running_number: String,
     val _payment_date: String,
     val partial_paid: Double,
-    val amount: Double,
+    val amount: String,
     val balance_amount: Double,
     val accounting_id: String,
     val bank_account_id: String,

@@ -1,4 +1,4 @@
 //HTTP GET method
 
-GET http://localhost:8080/api/creditTrackingView?page=0&size=12
+GET http://localhost:8080/api/debitPaid
 

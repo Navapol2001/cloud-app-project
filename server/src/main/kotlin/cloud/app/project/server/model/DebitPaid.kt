@@ -16,7 +16,7 @@ data class DebitPaid (
     val payment_method: String,
     val checkID: String,
     val running_number: String,
-    val paid_amount: Double,
+    val paid_amount: String,
     val pay_status: String,
     val accounting_id: String,
     val upd_date: String,
