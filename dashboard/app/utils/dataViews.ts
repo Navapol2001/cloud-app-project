@@ -7,3 +7,13 @@ export interface CreditorListData {
 	billNo: string;
 	amount: number;
 }
+
+export interface CreditTrackingView {
+	id: number;
+	upd_date: string;
+	pay_stats: string;
+	running_number: string;
+	partial_paid: number;
+	balance_amount: number;
+	cust_id: string;
+}
