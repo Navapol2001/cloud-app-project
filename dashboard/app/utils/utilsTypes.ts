@@ -1,5 +1,6 @@
 export type allowedStatus = "C" | "A" | "A*" | "A**";
 export type PaymentType = "เงินสด" | "เช็ค" | "โอน" | "";
+export type ContentType = 'creditor' | 'customer';
 
 export interface CreditorListData {
 	date: Date;

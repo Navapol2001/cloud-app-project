@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Loading from '@/app/components/Loading';
 import ErrorCard from '@/app/components/Error';
-import { CreditView, PaymentType } from '@/app/utils/dataViews';
+import { CreditView, PaymentType } from '@/app/utils/utilsTypes';
 
 export default function Page() {
 	// date related states

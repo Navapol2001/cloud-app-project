@@ -1,4 +1,7 @@
-export default function NavBarContent() {
+import { ContentType } from "../utils/utilsTypes";
+import Link from "next/link";
+
+export default function NavBarContent({ contentType }: { contentType: ContentType }) {
   return (
     <div className="navbar bg-base-100">
       <div className="flex-none">
@@ -23,7 +26,8 @@ export default function NavBarContent() {
         </label>
       </div>
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl">Creditor Report</a>
+        {contentType === 'creditor' && <Link href="/creditor" className="btn btn-ghost text-xl">Creditor Report</Link>}
+        {contentType === 'customer' && <Link href="/customer" className="btn btn-ghost text-xl">Customer Report</Link>}
       </div>
       <div className="navbar-end">
         <button className="btn btn-ghost btn-circle">

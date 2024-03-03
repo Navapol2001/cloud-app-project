@@ -2,14 +2,27 @@ import Link from "next/link";
 
 export default function Creditor() {
   return (
-    <ul className="menu bg-base-200 min-w-80 rounded-box">
-      <li className="menu-title text-white">Select <b>creditor&apos;s</b>view to look up to! 🧙🏻</li>
-      <li><Link href="/#">รายงานเจ้าหนี้รายตัว</Link></li>
-      <li><Link href="/#">รายการบิลเจ้าหนี้ค้างชำระ</Link></li>
-      <li><Link href="/#">รายการยอดเจ้าหนี้รวมคงเหลือ</Link></li>
-      <li><Link href="/#">รายการชำระเงินตามประเภทเจ้าหนี้</Link></li>
-      <li><Link href="/#">รายการเคลื่อนไหวบัญชีเจ้าหนี้รายตัว</Link></li>
-      <li><Link href="/#">รายงานเจ้าหนี้ค่าขนส่ง</Link></li>
-    </ul>
+    <div className="flex justify-center p-10">
+      <ul className="menu bg-base-100 w-120 rounded-box p-4 shadow-lg">
+        <li className="menu-title">
+          <span className="text-lg font-bold text-white">Select <b>creditor&apos;s</b> view to look up to! 🧙🏻</span>
+        </li>
+        <li>
+          <Link href="/creditor/paid" className="btn btn-ghost justify-start rounded-lg">
+            Paid Bill Page
+          </Link>
+        </li>
+        <li>
+          <Link href="/creditor/payment" className="btn btn-ghost justify-start rounded-lg">
+            Payment Visualize Page
+          </Link>
+        </li>
+        <li>
+          <Link href="/creditor/tracking" className="btn btn-ghost justify-start rounded-lg">
+            Tracking Page
+          </Link>
+        </li>
+      </ul>
+    </div>
   );
 }

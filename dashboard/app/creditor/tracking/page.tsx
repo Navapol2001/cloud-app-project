@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import Loading from "@/app/components/Loading";
 import ErrorCard from "@/app/components/Error";
-import { CreditTrackingView } from "@/app/utils/dataViews";
+import { CreditTrackingView } from "@/app/utils/utilsTypes";
 
 export default function TrackingPage() {
 	const [creditTrackingViews, setCreditTrackingViews] = useState<CreditTrackingView[]>([]);
