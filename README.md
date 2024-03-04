@@ -31,9 +31,14 @@ cd cloud-app-project
 ```
 
 ## Setting up
-1. you need to run python setup script and setup your enviroment.
+1. you need to run python setup script or shell script to setup environment file.
 ```bash
 python3 setup.py
+```
+or
+```bash
+chmod +x setup.sh
+./setup.sh
 ```
 - output
 ```bash
