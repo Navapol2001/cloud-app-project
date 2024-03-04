@@ -65,3 +65,7 @@ docker-compose --version
 ```bash
 docker-compose up --build -d
 ```
+# Usage
+### Dashboard[(Next.js)](https://nextjs.org/docs)
+http://localhost:3000/
+![image](https://scontent.fkkc3-1.fna.fbcdn.net/v/t1.15752-9/431153795_806750874595687_1417957252676059418_n.png?_nc_cat=107&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeGAz1fQ6DxIDCi1ob9coHejyLZFU7XCD7nItkVTtcIPuZaO9UfDg-kFZqhAj9JIT4RMgP2hZFutgERarnCaorfn&_nc_ohc=qMO4hMwS8V8AX87n-VJ&_nc_ht=scontent.fkkc3-1.fna&oh=03_AdQOa-Nl-ISSUvul74gf7O-IDMu3qBkcLXK4IqTG-bkPWQ&oe=660DA33B)
