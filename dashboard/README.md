@@ -1,4 +1,4 @@
-# Load Monitoring Web Application
+# Loan Monitoring Web Application
 
 ## Local Development
 
@@ -11,7 +11,7 @@ Then you can run `npm run dev` or `yarn dev` to start the development server.
 
 - `/` - Home page
 - `/creditor` - Creditor page
-- `/creditor/payment` - Creditor Visuaalize payment page
+- `/creditor/payment` - Creditor Visualize payment page
 - `/creditor/paid` - Creditor Paid page
 - `/creditor/tracking` - Creditor Tracking page
 - `/customer` - Customer page
