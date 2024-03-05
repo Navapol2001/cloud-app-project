@@ -1,9 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
+import Loading from "@/app/components/Loading";
+import ErrorCard from "@/app/components/Error";
 
 // Define the structure of your data based on the API response
 type PaidView = {
-	cust_id: string;
+  cust_id: string;
   upd_date: string;
   checkID: string;
   pay_status: string;
@@ -49,8 +51,8 @@ export default function PaidPage() {
   const handlePreviousPage = () => setPage(prev => prev > 0 ? prev - 1 : 0);
   const handleNextPage = () => setPage(prev => prev + 1);
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
+  if (isLoading) return <Loading />;
+  if (error) return <ErrorCard errorMessage={error} />;
 
   return (
     <div className="p-4">
@@ -75,7 +77,7 @@ export default function PaidPage() {
         <table className="table table-zebra w-full">
           <thead>
             <tr>
-							<th>Customer ID</th>
+              <th>Customer ID</th>
               <th>Update Date</th>
               <th>Check ID</th>
               <th>Payment Status</th>
@@ -86,7 +88,7 @@ export default function PaidPage() {
           <tbody>
             {paidViews.map((view, index) => (
               <tr key={index}>
-								<td>{view.cust_id}</td>
+                <td>{view.cust_id}</td>
                 <td>{view.upd_date}</td>
                 <td>{view.checkID}</td>
                 <td>{view.pay_status}</td>

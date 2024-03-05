@@ -29,7 +29,12 @@ export default function PaymentPage() {
 				if (!response.ok) {
 					throw new Error('Network response was not ok');
 				}
+
 				const data = await response.json();
+				// check if year filter is applied
+				if (year) {
+					data.content = data.content.filter((view: CreditView) => view.upd_date.includes(year));
+				}
 				setCreditViews(data.content);
 				setTotalPages(data.totalPages); // Assuming this is how your API returns total pages
 			} catch (err) {
